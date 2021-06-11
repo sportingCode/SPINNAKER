@@ -12,3 +12,5 @@ Authors: Giulia Fiscon (giulia.fiscon@iasi.cnr.it), Paola Paci (paci@diag.unirom
 
 - to change the inital configuration of SPINNAKER, please go into code/src/script/input/config.R
 
+- See the User Guide for detailed instructions on how to use SPINNAKER.
+
