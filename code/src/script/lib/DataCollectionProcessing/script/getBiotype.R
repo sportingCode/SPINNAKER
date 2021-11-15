@@ -3,7 +3,7 @@ getBiotype <- function(gene_symbol){
   ########################################
   # Query NCBI
   
-  fileURL <- "ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/GENE_INFO/Mammalia/Homo_sapiens.gene_info.gz"
+  fileURL <- "https://ftp.ncbi.nlm.nih.gov/gene/DATA/GENE_INFO/Mammalia/Homo_sapiens.gene_info.gz"
   destfile <- "Homo_sapiens_gene_info.txt.gz"
   download.file(fileURL, destfile, method="auto")
   gunzip(destfile)
