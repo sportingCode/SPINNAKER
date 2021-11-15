@@ -3,7 +3,7 @@ queryTargetScan <- function(miRBase,TargetScan){
   ########################################
   # Query miRBase
   
-  fileURL <- "ftp://mirbase.org/pub/mirbase/CURRENT/mature.fa.zip"
+  fileURL <- "https://www.mirbase.org/ftp/CURRENT/mature.fa.zip"
   destfile <- "mature.fa.zip"
   download.file(fileURL, destfile, method="auto")
   unzip(destfile)
