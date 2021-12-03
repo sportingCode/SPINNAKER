@@ -2,7 +2,7 @@ Copyright 2021 Giulia Fiscon, Paola Paci
 
 SPINNAKER is a free software. See the file LICENSE for copying conditions.
 
-Authors: Giulia Fiscon (giulia.fiscon@iasi.cnr.it), Paola Paci (paci@diag.uniroma1.it).
+Authors: Paola Paci (paci@diag.uniroma1.it), Giulia Fiscon (giulia.fiscon@iasi.cnr.it).
 
 - code/src folder includes the main.R script to launch and all the R functions needed collected in the "script" subfolder
 
