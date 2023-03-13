@@ -1,38 +1,39 @@
 getLibrary <- function(){
   
-  ########################################
+  packages_installed <- installed.packages()
   
-  print("Checking Dependency...")
+  ######################################
+  # Installing packages from CRAN
   
-  packages <- c("Biostrings","data.table","readxl","R.utils","plyr","propagate","stringi","pheatmap")
-  dependency <- data.frame(package = packages, repository = c("Bioc",rep("CRAN",7)), row.names = packages)
+  if(!"devtools" %in% packages_installed){install.packages('devtools')}
   
-  installed <- installed.packages()
+  packages_CRAN <- c("data.table","readxl","R.utils","plyr","propagate","stringi","pheatmap")
   
-  if(!"devtools" %in% installed){install.packages('devtools')}
-  if(!"BiocManager" %in% installed){install.packages('BiocManager')}
+  packages_to_install_CRAN <- setdiff(packages_CRAN,packages_installed)
   
-  install <- dependency[!(dependency$package %in% installed),]
-  
-  if(nrow(install)>0){
-    
-    CRAN <- install$package[which(install$repository == 'CRAN')]
-    Bioc <- install$package[which(install$repository == 'Bioc')]
-    
-    if(length(CRAN)>0){devtools::install_cran(CRAN,upgrade = 'never')}
-    if(length(Bioc)>0){BiocManager::install(Bioc,update = F)}
+  if( length(packages_to_install_CRAN) > 0 ){
+    devtools::install_cran(packages_to_install_CRAN, upgrade = 'never')
   }
   
-  print("Checking Dependency Finished!")
-  ########################################
+  # Loading installed packages
   
-  print("Loading packages...")
+  invisible(sapply(packages_CRAN,require,character.only = TRUE))
   
-  invisible(sapply(packages,require, character.only = TRUE))
+  ######################################
+  # Installing packages from Bioconductor
   
-  print("Loading packages Finished")
-
+  if(!"BiocManager" %in% packages_installed){install.packages('BiocManager')}
+  
+  packages_Bioc <- c("Biostrings")
+  
+  packages_to_install_Bioc <- setdiff(packages_Bioc,packages_installed)
+  
+  if( length(packages_to_install_Bioc) > 0 ){
+    BiocManager::install(packages_to_install_Bioc, update = F)
+  }
+  
+  # Loading installed packages
+  
+  invisible(sapply(packages_Bioc,require,character.only = TRUE))
+  ######################################
 }
-
-
-
